@@ -27,3 +27,8 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model VerificationToken
+ * 
+ */
+export type VerificationToken = Prisma.VerificationTokenModel

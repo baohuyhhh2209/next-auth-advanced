@@ -19,6 +19,7 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/action/login";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 export const LoginForm = () => {
   const searchParams = useSearchParams();
   const urlError =
@@ -42,8 +43,7 @@ export const LoginForm = () => {
     startTransition(() => {
       login(values).then((res) => {
         setError(res?.error);
-        // TODO: Add when we add 2FA
-        // setSuccess(res?.success);
+        setSuccess(res?.success);
       });
     });
   };
@@ -93,6 +93,14 @@ export const LoginForm = () => {
                 </FormItem>
               )}
             />
+            <Button
+              size="sm"
+              variant="link"
+              asChild
+              className="px-0 font-normal"
+            >
+              <Link href="/auth/reset">Forgot password?</Link>
+            </Button>
           </div>
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
